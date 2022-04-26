@@ -1,8 +1,10 @@
 pipeline {
-    agent any
 
-    tools {
-        nodejs 'NodeJS 8.9.0'
+    agent {
+        docker {
+            image 'maven:3.6.1-jdk-8-alpine'
+            args '-v $HOME/.m2:/root/.m2'
+        }
     }
 
     stages {
